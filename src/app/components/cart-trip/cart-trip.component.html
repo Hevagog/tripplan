@@ -1,0 +1,33 @@
+<div class="card mb-3" [class.no-seats]="trip.availableSeats === 0"
+    [ngClass]="{'low-seats': trip.availableSeats <= 3 && trip.availableSeats > 0}">
+    <div class="d-flex justify-content-center">
+        <img [src]="'./assets/' + trip.image" alt="trip image" class="round-image" style="width: 400px; height: 400px;">
+    </div>
+    <div class="card-header">
+        <div class="d-flex justify-content-between">
+            <div>
+                <span class="card-body"></span>
+                <h2 class="card-title">{{ trip.name | uppercase }}</h2>
+                <p class="card-text">{{ trip.country | uppercase }}</p>
+                <p class="card-text">{{ trip.startDate }} - {{ trip.endDate }}</p>
+                <p class="card-text">{{ trip.price | currency:trip.currency:selectedCurrency ?? '' }} {{
+                    this.selectedCurrency ?? ''}}</p>
+                <p class="card-text">{{ trip.description }}</p>
+                <p class="card-text">Dostępne miejsca: {{ trip.availableSeats }}</p>
+                <p class="card-text">Miejsca w koszyku: {{ tripsInCartAmount }}</p>
+                <p class="card-text">Suma: {{ tripsInCartAmount ? (tripsInCartAmount * trip.price |
+                    currency:trip.currency:selectedCurrency ?? '') : '' }} {{
+                    this.selectedCurrency ?? ''}}</p>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <button class="btn btn-primary" *ngIf="trip.availableSeats != 0" (click)="addSeat()"
+                            [disabled]="trip.availableSeats === 0">+</button>
+                        <button class="btn btn-primary" (click)="removeSeat()"
+                            [disabled]="this.tripsInCartAmount === 0">-</button>
+                        <button class="btn btn-success" (click)="buy()"
+                            [disabled]="this.tripsInCartAmount === 0">Kup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

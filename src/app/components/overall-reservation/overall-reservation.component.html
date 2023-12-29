@@ -1,0 +1,8 @@
+<div *ngIf="totalReservedSeats && totalReservedSeats > 0"
+    [ngStyle]="{'background-color': totalReservedSeats && totalReservedSeats > 10 ? 'green' : 'red', 'z-index': '9999'}"
+    class="d-flex flex-column align-items-center justify-content-center rounded-circle position-fixed p-2"
+    style="width: 80px; height: 80px; right: 20px; top: 20px;">
+    <span class="fas fa-shopping-cart mb-1"></span>
+    <span class="font-weight-bold mb-1">{{ totalReservedSeats }}</span>
+    <span>{{ totalReservedValue?.toFixed(2)}}</span>
+</div>

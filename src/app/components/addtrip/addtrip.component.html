@@ -1,0 +1,58 @@
+<form [formGroup]="tripForm" (ngSubmit)="onSubmit()" class="mt-4">
+    <div class="form-group">
+        <label for="name">Nazwa</label>
+        <input type="text" id="name" class="form-control" formControlName="name">
+    </div>
+    <div *ngIf="submitted && tripForm.controls.name.errors" class="text-danger">Nazwa jest wymagana.</div>
+    <div class="form-group">
+        <label for="country">Kraj</label>
+        <input type="text" id="country" class="form-control" formControlName="country">
+    </div>
+    <div *ngIf="submitted && tripForm.controls.country.errors" class="text-danger">Kraj jest wymagany.</div>
+    <div class="form-group">
+        <label for="startDate">Data rozpoczęcia</label>
+        <input type="date" id="startDate" class="form-control" formControlName="startDate">
+        <div *ngIf="submitted && tripForm.controls.startDate.errors?.['required']" class="text-danger">Data rozpoczęcia
+            is
+            required.</div>
+    </div>
+    <div class="form-group">
+        <label for="endDate">Data zakończenia</label>
+        <input type="date" id="endDate" class="form-control" formControlName="endDate">
+        <div *ngIf="submitted && tripForm.controls.endDate.errors?.['required']" class="text-danger">Data zakończenia is
+            required.</div>
+        <div *ngIf="submitted && tripForm.errors?.['dateRange']" class="text-danger">Data zakończenia must be after Data
+            rozpoczęcia.</div>
+    </div>
+    <div class="form-group">
+        <label for="price">Cena</label>
+        <input type="number" id="price" class="form-control" formControlName="price">
+    </div>
+    <div *ngIf="submitted && tripForm.controls.price.errors" class="text-danger">Cena jest wymagana.</div>
+    <div class="form-group">
+        <label for="maxSeats">Maksymalna liczba miejsc</label>
+        <input type="number" id="maxSeats" class="form-control" formControlName="maxSeats">
+    </div>
+    <div *ngIf="submitted && tripForm.controls.maxSeats.errors" class="text-danger">Niepoprawna wartość liczby miejsc.
+    </div>
+
+    <div class="form-group">
+        <label for="description">Opis</label>
+        <textarea id="description" class="form-control" formControlName="description"></textarea>
+    </div>
+    <div *ngIf="submitted && tripForm.controls.description.errors" class="text-danger">Opis jest wymagany.</div>
+
+    <div class="form-group">
+        <label for="rating">Rating</label>
+        <input type="number" id="rating" class="form-control" formControlName="rating">
+        <div *ngIf="submitted && tripForm.controls.rating.errors?.['required']" class="text-danger">Rating is required.
+        </div>
+        <div *ngIf="submitted && tripForm.controls.rating.errors?.['min']" class="text-danger">Rating must be at least
+            0.
+        </div>
+        <div *ngIf="submitted && tripForm.controls.rating.errors?.['max']" class="text-danger">Rating must be at most 5.
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Dodaj wycieczkę</button>
+</form>

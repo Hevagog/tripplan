@@ -1,0 +1,66 @@
+.round-image {
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.card {
+    overflow: hidden;
+}
+
+.no-seats {
+    position: relative;
+    background-color: gray;
+
+}
+
+.no-seats::after {
+    content: "Brak miejsc";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: red;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.low-seats {
+    background-color: yellow;
+    /* Zmień na dowolny kolor, który chcesz */
+}
+
+.rating-stars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.rating-stars .fas.fa-star {
+    color: #ddd;
+    cursor: pointer;
+}
+
+.rating-stars .fas.fa-star.active,
+.rating-stars .fas.fa-star.half-active::after {
+    color: gold;
+}
+
+.rating-stars .fas.fa-star.half-active::after {
+    content: '\2605';
+    /* filled star character */
+    position: absolute;
+    margin-left: -1em;
+    width: 0.5em;
+    overflow: hidden;
+}
+
+.circle {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+}

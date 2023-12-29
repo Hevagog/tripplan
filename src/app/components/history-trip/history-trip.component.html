@@ -1,0 +1,24 @@
+<div class="card mb-3">
+    <div class="info-box">
+        {{ getTripStatus() }}
+    </div>
+    <div class="d-flex justify-content-center">
+        <img [src]="'./assets/' + trip.image" alt="trip image" class="round-image img-thumbnail">
+    </div>
+    <div class="card-header bg-primary text-white">
+        <div class="d-flex justify-content-between">
+            <div>
+                <h2 class="card-title">{{ trip.name | uppercase }}</h2>
+                <p class="card-text">{{ trip.country | uppercase }}</p>
+                <p class="card-text">{{ trip.startDate }} - {{ trip.endDate }}</p>
+                <p class="card-text">{{ trip.price | currency:trip.currency:selectedCurrency ?? '' }} {{
+                    this.selectedCurrency ?? ''}}</p>
+                <p class="card-text">{{ trip.description }}</p>
+                <p class="card-text">Zakupione miejsca: {{ tripsInHistoryAmount ??'' }}</p>
+                <p class="card-text">Data zakupu: {{ tripsBoughtTime?.toLocaleString('en-US', { timeZone:
+                    'Europe/Warsaw' }) }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
