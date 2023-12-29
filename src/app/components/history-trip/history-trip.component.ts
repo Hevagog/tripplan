@@ -18,16 +18,15 @@ export class HistoryTripComponent implements OnInit {
   tripsInHistoryAmount: number | undefined;
   tripsBoughtTime: Date | undefined;
   @Input() trip!: TripObject;
-  @Input() index: number = 0;
   @Input() selectedCurrency: string | undefined;
   newCurrency: number | undefined;
 
   ngOnInit(): void {
     this.buyTripService.tripsBoughtAmount$.subscribe(total => {
-      this.tripsInHistoryAmount = total[this.index];
+      this.tripsInHistoryAmount = total[this.trip.index];
     });
     this.buyTripService.tripsBoughtTime$.subscribe(total => {
-      this.tripsBoughtTime = total[this.index];
+      this.tripsBoughtTime = total[this.trip.index];
     });
   }
 
@@ -40,10 +39,10 @@ export class HistoryTripComponent implements OnInit {
       this.newCurrency = this.trip.price;
     });
     this.buyTripService.tripsBoughtAmount$.subscribe(total => {
-      this.tripsInHistoryAmount = total[this.index];
+      this.tripsInHistoryAmount = total[this.trip.index];
     });
     this.buyTripService.tripsBoughtTime$.subscribe(total => {
-      this.tripsBoughtTime = total[this.index];
+      this.tripsBoughtTime = total[this.trip.index];
     });
 
   }

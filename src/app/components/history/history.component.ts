@@ -17,8 +17,8 @@ import { HistoryFilterTripComponent } from 'app/components/history-filter-trip/h
 export class HistoryComponent implements OnInit {
   tripsInHistory: { [key: number]: TripObject } | undefined;
   tripsInHistoryList: TripObject[] = [];
-  tripsInHistoryAmount: number | undefined;
-  @Input() trip!: TripObject;
+  tripsInHistoryAmount: { [key: number]: number } | undefined;
+  tripsInHistoryAmountList: number[] = [];
   selectedCurrency: string | undefined;
   defaultCurrency: string = 'złoty';
   sum = 0;
@@ -29,7 +29,9 @@ export class HistoryComponent implements OnInit {
       this.tripsInHistoryList = Object.values(total);
     });
     this.buyTripService.tripsBoughtAmount$.subscribe(total => {
-      this.tripsInHistoryAmount = total[this.trip.index];
+      console.log(total);
+      this.tripsInHistoryAmount = total;
+      this.tripsInHistoryAmountList = Object.values(total);
     });
   }
 
@@ -45,7 +47,8 @@ export class HistoryComponent implements OnInit {
       this.tripsInHistory = total;
     });
     this.buyTripService.tripsBoughtAmount$.subscribe(total => {
-      this.tripsInHistoryAmount = total[this.trip.index];
+      this.tripsInHistoryAmount = total;
+      this.tripsInHistoryAmountList = Object.values(total);
     });
   }
 

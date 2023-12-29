@@ -15,9 +15,9 @@ export class BuyTripService {
   tripsCollection;
   trips$: Observable<any[]>;
 
-  private _tripsBought = new BehaviorSubject<{ [key: number]: TripObject }>({});
-  private _tripsBoughtAmount = new BehaviorSubject<{ [key: number]: number }>({});
-  private _tripsBoughtTime = new BehaviorSubject<{ [key: number]: Date }>({});
+  private _tripsBought = new BehaviorSubject<{ [key: string]: TripObject }>({});
+  private _tripsBoughtAmount = new BehaviorSubject<{ [key: string]: number }>({});
+  private _tripsBoughtTime = new BehaviorSubject<{ [key: string]: Date }>({});
   tripsBought$ = this._tripsBought.asObservable();
   tripsBoughtAmount$ = this._tripsBoughtAmount.asObservable();
   tripsBoughtTime$ = this._tripsBoughtTime.asObservable();
@@ -44,9 +44,6 @@ export class BuyTripService {
     this._tripsBoughtAmount.next(tripsBoughtAmount);
     this._tripsBoughtTime.next(tripsBoughtTime);
 
-    console.log(this._tripsBought.value);
-    console.log(this._tripsBoughtAmount.value);
-    console.log(this._tripsBoughtTime.value);
   }
 
   buyAllTrips(trips: { [key: number]: TripObject }, amount: { [key: number]: number }) {
@@ -64,8 +61,5 @@ export class BuyTripService {
     this._tripsBoughtAmount.next(tripsBoughtAmount);
     this._tripsBoughtTime.next(tripsBoughtTime);
 
-    console.log(this._tripsBought.value);
-    console.log(this._tripsBoughtAmount.value);
-    console.log(this._tripsBoughtTime.value);
   }
 }

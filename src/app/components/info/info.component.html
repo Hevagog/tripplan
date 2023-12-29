@@ -1,7 +1,7 @@
 <div *ngIf="upcomingTrips && upcomingTrips.length >0">
-    <ng-container *ngFor="let trip of upcomingTrips; index as i">
+    <ng-container *ngFor="let trip of upcomingTrips">
         <ng-container *ngIf="tripsInHistory">
-            <app-history-trip [index]="i" [trip]="trip" class="col-lg-4 col-md-6 mb-4"></app-history-trip>
+            <app-history-trip [trip]="trip" class="col-lg-4 col-md-6 mb-4"></app-history-trip>
         </ng-container>
     </ng-container>
 </div>

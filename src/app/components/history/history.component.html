@@ -1,12 +1,12 @@
 <ng-container *ngIf="tripsInHistory">
     <app-history-filter-trip [trips]="tripsInHistoryList"
-        (filterEvent)="tripsInHistory = $event"></app-history-filter-trip>
+        (filterEvent)="tripsInHistoryList = $event"></app-history-filter-trip>
 </ng-container>
 <div class="container">
     <div class="row">
-        <ng-container *ngFor="let trip of tripsInHistoryList; index as i">
-            <ng-container *ngIf="tripsInHistory">
-                <app-history-trip [index]="i" [trip]="trip" class="col-lg-4 col-md-6 mb-4"></app-history-trip>
+        <ng-container *ngFor="let trip of tripsInHistoryList">
+            <ng-container *ngIf="tripsInHistoryList">
+                <app-history-trip [trip]="trip" class="col-lg-4 col-md-6 mb-4"></app-history-trip>
             </ng-container>
         </ng-container>
         <ng-container *ngIf="tripsInHistoryList?.length === 0">
