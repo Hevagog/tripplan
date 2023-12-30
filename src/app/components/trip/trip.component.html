@@ -1,8 +1,11 @@
 <div class="card mb-3" [class.no-seats]="trip.availableSeats === 0"
     [ngClass]="{'low-seats': trip.availableSeats <= 3 && trip.availableSeats > 0}">
     <div class="d-flex justify-content-center">
-        <img [src]="trip.image" alt="trip image" class="round-image" style="width: 400px; height: 400px;">
+        <a [routerLink]="['/trips', trip.index]" class="trip-link">
+            <img [src]="trip.image" alt="trip image" class="round-image" style="width: 400px; height: 400px;">
+        </a>
     </div>
+
     <div class="card-header">
         <div class="d-flex justify-content-between">
             <div>
@@ -25,16 +28,6 @@
                         <button class="btn btn-danger" (click)="deleteTrip()">Delete</button>
                         <button class="btn btn-success" *ngIf="reservedSeats ?? 0 > 0" (click)="addToCart()"
                             [disabled]="reservedSeats === 0">Dodaj do koszyka</button>
-                    </div>
-                </div>
-                <div>
-                    <div class="rating-stars">
-                        <span *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
-                            <button class="btn btn-outline-dark circle" (click)="rate(i + 1)"
-                                [ngStyle]="{'background-color': i < trip.rating ? 'yellow' : 'white'}">
-                                {{i+1}}
-                            </button>
-                        </span>
                     </div>
                 </div>
             </div>

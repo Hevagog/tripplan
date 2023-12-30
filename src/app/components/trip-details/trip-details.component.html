@@ -1,0 +1,64 @@
+<a routerLink="/trips" class="btn btn-primary mb-3">Back</a>
+<div class="card mb-3 text-center">
+    <br>
+    <h2 class="card-title display-4">{{ trip.name | uppercase }}</h2>
+    <br>
+    <img *ngIf="trip?.image" [src]="trip.image" alt="trip image" class="card-img-top"
+        style="width: 100%; object-fit: cover; border-radius: 5%;">
+    <br>
+    <div id="carouselExampleIndicators" class="carousel slide d-none d-lg-block" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button *ngFor="let url of images; let i = index" type="button" data-bs-target="#carouselExampleIndicators"
+                [attr.data-bs-slide-to]="i" [class.active]="i == 0" aria-current="true"
+                [attr.aria-label]="'Slide ' + (i+1)"></button>
+        </div>
+        <div class="carousel-inner">
+            <div *ngFor="let url of images; let i = index" class="carousel-item" [class.active]="i == 0">
+                <img [src]="url" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <h3 class="card-text lead">{{ trip.description }}</h3>
+
+    <div *ngIf="location">
+        <div [innerHTML]="safeHtml"></div>
+    </div>
+
+    <div class="card-body">
+        <p class="card-text lead">{{ trip.country | uppercase }}</p>
+        <p class="card-text lead">{{ trip.startDate }} - {{ trip.endDate }}</p>
+        <p class="card-text lead">{{ trip.price | currency:trip.currency:selectedCurrency ?? '' }} {{
+            this.selectedCurrency ?? ''}}</p>
+        <p class="card-text lead">Dostępne miejsca: {{ trip.availableSeats }}</p>
+        <p class="card-text lead" *ngIf="reservedSeats && reservedSeats > 0">Zarezerwowane miejsca: {{ reservedSeats }}
+        </p>
+        <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+            <button class="btn btn-primary" *ngIf="trip.availableSeats != 0" (click)="addSeat()"
+                [disabled]="trip.availableSeats === 0">+</button>
+            <button class="btn btn-primary" *ngIf="reservedSeats && reservedSeats != 0" (click)="removeSeat()"
+                [disabled]="reservedSeats === 0">-</button>
+            <button class="btn btn-danger" (click)="deleteTrip()">Delete</button>
+            <button class="btn btn-success" *ngIf="reservedSeats ?? 0 > 0" (click)="addToCart()"
+                [disabled]="reservedSeats === 0">Dodaj do koszyka</button>
+        </div>
+        <div class="rating-stars mt-3">
+            <span *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                <button class="btn btn-outline-dark circle" (click)="rate(i + 1)"
+                    [ngStyle]="{'background-color': i < trip.rating ? 'yellow' : 'white'}">
+                    {{i+1}}
+                </button>
+            </span>
+            ({{ trip.numRated }})
+        </div>
+    </div>
+</div>

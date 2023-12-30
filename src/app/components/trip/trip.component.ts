@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CurrencyPipe } from 'app/components/pipes/currency.pipe';
 import { TripObject } from 'assets/trip-object';
@@ -9,7 +10,7 @@ import { OpTripService } from 'app/services/op-trip.service';
 @Component({
   selector: 'app-trip',
   standalone: true,
-  imports: [CommonModule, CurrencyPipe],
+  imports: [CommonModule, CurrencyPipe, RouterLink],
   templateUrl: './trip.component.html',
   styleUrl: './trip.component.css'
 })
@@ -23,7 +24,8 @@ export class TripComponent implements OnInit {
 
   constructor(private reservationService: ReservationService,
     private currencyService: CurrencyService,
-    private opTripService: OpTripService) {
+    private opTripService: OpTripService,
+    private router: Router) {
     this.trip = {} as TripObject;
     this.currencyService.currentCurrency$.subscribe(currency => {
       this.selectedCurrency = currency;
@@ -89,7 +91,5 @@ export class TripComponent implements OnInit {
       circle.style.boxShadow = '';
     }
   }
-
-
 
 }

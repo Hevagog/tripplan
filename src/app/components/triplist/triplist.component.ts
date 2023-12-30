@@ -1,20 +1,24 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TripComponent } from 'app/components/trip/trip.component';
 import { TripObject } from 'assets/trip-object';
 import { CurrencyPipe } from 'app/components/pipes/currency.pipe';
 import { OpTripService } from 'app/services/op-trip.service';
+import { PaginationControlsComponentComponent } from '../pagination-controls-component/pagination-controls-component.component';
 
 @Component({
   selector: 'app-triplist',
   standalone: true,
-  imports: [CommonModule, TripComponent, CurrencyPipe],
+  imports: [CommonModule, TripComponent, CurrencyPipe, PaginationControlsComponentComponent, FormsModule],
   templateUrl: './triplist.component.html',
   styleUrl: './triplist.component.css'
 })
 export class TriplistComponent implements OnInit {
   @Input() selectedCurrency: string = 'euro';
   trips: TripObject[] = [];
+  page = 1;
+  @Input() pageSize = 25;
   largestPrice: number | undefined;
   smallestPrice: number | undefined;
 
@@ -56,4 +60,20 @@ export class TriplistComponent implements OnInit {
     }
     return '';
   }
+
+  get paginatedTrips() {
+    const start = (this.page - 1) * this.pageSize;
+    const end = start + this.pageSize;
+    return this.trips.slice(start, end);
+  }
+
+  onPageChange(page: number) {
+    this.page = page;
+  }
+
+  onPageSizeChange(size: number) {
+    this.pageSize = size;
+    this.page = 1; // Resetujemy stronę do 1, gdy zmieniamy ilość pozycji na stronie
+  }
+
 }

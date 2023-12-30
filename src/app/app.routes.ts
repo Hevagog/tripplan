@@ -8,6 +8,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { AddtripComponent } from './components/addtrip/addtrip.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { TitlePageComponent } from './components/title-page/title-page.component';
+import { TripDetailsComponent } from './components/trip-details/trip-details.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
@@ -15,6 +16,7 @@ export const routes: Routes = [
     { path: '', component: TitlePageComponent },
     { path: 'cart', component: CartComponent },
     { path: 'trips', component: MainPageComponent },
+    { path: 'trips/:id', component: TripDetailsComponent },
     { path: 'addtrip', component: AddtripComponent },
     { path: 'history', component: HistoryComponent },
     { path: 'info', component: InfoComponent },

@@ -9,6 +9,10 @@ export interface TripObject {
     maxSeats: number;
     description: string;
     image: string;
+    image2: string;
+    image3: string;
+    location: string;
     availableSeats: number;
     rating: number;
+    numRated: number;
 }

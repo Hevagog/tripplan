@@ -1,7 +1,14 @@
 <div class="container">
     <div class="row">
-        <app-trip *ngFor="let trip of trips" [trip]="trip" (delete)="deleteTrip($event)"
+        <app-trip *ngFor="let trip of paginatedTrips" [trip]="trip" (delete)="deleteTrip($event)"
             (seatsChanged)="onSeatsChanged()" [ngClass]="getPriceClass(trip.price)"
             class="col-lg-4 col-md-6 mb-4"></app-trip>
     </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Ilość wycieczek na stronie</span>
+        <input type="number" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default" [(ngModel)]="pageSize" (change)="onPageSizeChange(pageSize)">
+    </div>
 </div>
+<app-pagination-controls-component [itemsPerPage]="pageSize" [totalItems]="trips.length"
+    (pageChange)="onPageChange($event)"></app-pagination-controls-component>
