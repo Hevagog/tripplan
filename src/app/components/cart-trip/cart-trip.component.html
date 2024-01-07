@@ -1,7 +1,7 @@
 <div class="card mb-3" [class.no-seats]="trip.availableSeats === 0"
     [ngClass]="{'low-seats': trip.availableSeats <= 3 && trip.availableSeats > 0}">
     <div class="d-flex justify-content-center">
-        <img [src]="'./assets/' + trip.image" alt="trip image" class="round-image" style="width: 400px; height: 400px;">
+        <img [src]="trip.image" alt="trip image" class="round-image" style="width: 400px; height: 400px;">
     </div>
     <div class="card-header">
         <div class="d-flex justify-content-between">

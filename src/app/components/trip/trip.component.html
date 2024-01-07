@@ -19,6 +19,16 @@
                 <p class="card-text">Dostępne miejsca: {{ trip.availableSeats }}</p>
                 <p class="card-text" *ngIf="reservedSeats && reservedSeats > 0">Zarezerwowane miejsca: {{ reservedSeats
                     }}</p>
+                <div class="rating-stars mt-3">
+                    <span *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                        <button class="btn btn-outline-dark circle" (click)="rate(i + 1)"
+                            [ngStyle]="{'background-color': i < trip.rating ? 'yellow' : 'white'}">
+                            {{i+1}}
+                        </button>
+                    </span>
+                    ({{ trip.numRated }})
+                </div>
+                <br>
                 <div class="d-flex justify-content-between">
                     <div>
                         <button class="btn btn-primary" *ngIf="trip.availableSeats != 0" (click)="addSeat()"

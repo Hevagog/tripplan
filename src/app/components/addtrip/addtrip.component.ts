@@ -31,7 +31,11 @@ export class AddtripComponent {
     price: new FormControl('', [Validators.required, Validators.min(0)]),
     maxSeats: new FormControl('', [Validators.required, Validators.min(1)]),
     description: new FormControl('', Validators.required),
-    rating: new FormControl('', [Validators.required, Validators.min(0), Validators.max(5)]),
+    image: new FormControl('', Validators.required),
+    image2: new FormControl(''),
+    image3: new FormControl(''),
+    image4: new FormControl(''),
+    location: new FormControl('', Validators.required),
   }, { validators: this.dateLessThan('startDate', 'endDate') });
 
   onSubmit() {
@@ -46,9 +50,13 @@ export class AddtripComponent {
         currency: this.selectedCurrency,
         maxSeats: this.tripForm.value.maxSeats,
         description: this.tripForm.value.description,
-        image: "../assets/images/default.jpg",
+        image: this.tripForm.value.image,
+        image2: this.tripForm.value.image2,
+        image3: this.tripForm.value.image3,
+        image4: this.tripForm.value.image4,
         availableSeats: this.tripForm.value.maxSeats,
-        rating: this.tripForm.value.rating,
+        location: this.tripForm.value.location,
+        rating: 0,
       } as unknown as TripObject;
       this.opTripService.addTrip(formToSend as unknown as TripObject);
       this.tripForm.reset();

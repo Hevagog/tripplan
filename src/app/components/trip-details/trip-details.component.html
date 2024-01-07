@@ -2,10 +2,7 @@
 <div class="card mb-3 text-center">
     <br>
     <h2 class="card-title display-4">{{ trip.name | uppercase }}</h2>
-    <br>
-    <img *ngIf="trip?.image" [src]="trip.image" alt="trip image" class="card-img-top"
-        style="width: 100%; object-fit: cover; border-radius: 5%;">
-    <br>
+
     <div id="carouselExampleIndicators" class="carousel slide d-none d-lg-block" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button *ngFor="let url of images; let i = index" type="button" data-bs-target="#carouselExampleIndicators"
@@ -62,3 +59,5 @@
         </div>
     </div>
 </div>
+
+<app-comments></app-comments>

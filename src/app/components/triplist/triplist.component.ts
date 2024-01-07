@@ -6,11 +6,12 @@ import { TripObject } from 'assets/trip-object';
 import { CurrencyPipe } from 'app/components/pipes/currency.pipe';
 import { OpTripService } from 'app/services/op-trip.service';
 import { PaginationControlsComponentComponent } from '../pagination-controls-component/pagination-controls-component.component';
+import { FiltertripComponent } from '../filtertrip/filtertrip.component';
 
 @Component({
   selector: 'app-triplist',
   standalone: true,
-  imports: [CommonModule, TripComponent, CurrencyPipe, PaginationControlsComponentComponent, FormsModule],
+  imports: [CommonModule, TripComponent, CurrencyPipe, PaginationControlsComponentComponent, FormsModule, FiltertripComponent],
   templateUrl: './triplist.component.html',
   styleUrl: './triplist.component.css'
 })

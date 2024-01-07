@@ -11,6 +11,7 @@ export interface TripObject {
     image: string;
     image2: string;
     image3: string;
+    image4: string;
     location: string;
     availableSeats: number;
     rating: number;

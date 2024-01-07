@@ -7,11 +7,12 @@ import { CurrencyPipe } from 'app/components/pipes/currency.pipe';
 import { OpTripService } from 'app/services/op-trip.service';
 import { ReservationService } from 'app/services/reservation.service';
 import { CurrencyService } from 'app/services/currency.service';
+import { CommentsComponent } from '../comments/comments.component';
 
 @Component({
   selector: 'app-trip-details',
   standalone: true,
-  imports: [CommonModule, CurrencyPipe, RouterLink],
+  imports: [CommonModule, CurrencyPipe, RouterLink, CommentsComponent],
   templateUrl: './trip-details.component.html',
   styleUrl: './trip-details.component.css'
 })
@@ -98,6 +99,9 @@ export class TripDetailsComponent implements OnInit {
     }
     if (this.trip.image3) {
       this.images.push(this.trip.image3);
+    }
+    if (this.trip.image4) {
+      this.images.push(this.trip.image4);
     }
   }
 

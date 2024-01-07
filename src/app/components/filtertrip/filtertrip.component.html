@@ -3,41 +3,46 @@
         <div class="form-group row">
             <div class="form-group col">
                 <label for="country">Kierunek:</label>
-                <select class="form-control mx-2" id="country" formControlName="country">
+                <select class="form-control mx-2" id="country" formControlName="country" (change)="onSubmit()">
                     <option *ngFor="let direction of tripsDirections" [value]="direction">{{direction}}</option>
                 </select>
             </div>
             <div class="form-group col">
                 <label for="price">Cena: {{filterForm.get('price')?.value}}</label>
                 <input type="range" class="form-control mx-2" id="price" formControlName="price" [min]="smallestPrice"
-                    [max]="largestPrice">
+                    [max]="largestPrice" (input)="onSubmit()">
             </div>
             <div class="form-group col">
                 <label for="startDate">Od:</label>
-                <input type="date" class="form-control mx-2" id="startDate">
-                <div *ngIf="submitted && filterForm.controls.startDate.errors?.['lessThan']" class="text-danger">
+                <input type="date" class="form-control mx-2" id="startDate" formControlName="startDate"
+                    (input)="onSubmit()">
+                <div *ngIf="filterForm.controls.startDate.errors?.['lessThan']" class="text-danger">
                     Niepoprawna data.</div>
             </div>
             <div class="form-group col">
                 <label for="endDate">Do:</label>
-                <input type="date" class="form-control mx-2" id="endDate">
-                <div *ngIf="submitted && filterForm.controls.endDate.errors?.['lessThan']" class="text-danger">
+                <input type="date" class="form-control mx-2" id="endDate" formControlName="endDate"
+                    (input)="onSubmit()">
+                <div *ngIf="filterForm.controls.endDate.errors?.['lessThan']" class="text-danger">
                     Niepoprawna data.</div>
             </div>
             <div class="form-group col">
                 <label for="ratingLow">Ocena:</label>
-                <input type="number" class="form-control mx-2" id="ratingLow" min="1" max="5">
-                <div *ngIf="submitted && filterForm.controls.ratingLow.errors?.['lessThan']" class="text-danger">
-                    Niepoprawna wartość oceny</div>
+                <input type="number" class="form-control mx-2" id="ratingLow" min="1" max="5"
+                    formControlName="ratingLow" (input)="onSubmit()">
+                <div *ngIf="filterForm.controls.ratingLow.errors || checkValidity() " class="text-danger">
+                    Niepoprawna ocena.</div>
             </div>
             <div class="form-group col">
                 <label for="ratingHigh">Ocena:</label>
-                <input type="number" class="form-control mx-2" id="ratingHigh" min="1" max="5">
-                <div *ngIf="submitted && filterForm.controls.ratingHigh.errors?.['lessThan']" class="text-danger">
-                    Niepoprawna wartość oceny.</div>
+                <input type="number" class="form-control mx-2" id="ratingHigh"
+                    min="{{filterForm.get('ratingLow')?.value || 0}}" max="5" formControlName="ratingHigh"
+                    (input)="onSubmit()">
+                <div *ngIf="filterForm.controls.ratingHigh.errors || checkValidity() " class="text-danger">
+                    Niepoprawna ocena.</div>
             </div>
-            <div class="col d-flex align-items-center justify-content-center">
-                <button type="submit" class="btn btn-primary mx-2">Filtruj</button>
+            <div class="form-group col">
+                <button type="button" class="btn btn-secondary" (click)="clearInputs(); onSubmit()">Clear</button>
             </div>
         </div>
     </form>

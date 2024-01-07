@@ -1,3 +1,5 @@
+<app-filtertrip [trips]="trips" (filterEvent)="trips = $event"></app-filtertrip>
+<br>
 <div class="container">
     <div class="row">
         <app-trip *ngFor="let trip of paginatedTrips" [trip]="trip" (delete)="deleteTrip($event)"

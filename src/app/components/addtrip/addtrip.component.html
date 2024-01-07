@@ -41,8 +41,30 @@
         <textarea id="description" class="form-control" formControlName="description"></textarea>
     </div>
     <div *ngIf="submitted && tripForm.controls.description.errors" class="text-danger">Opis jest wymagany.</div>
-
     <div class="form-group">
+        <label for="image">Pierwsze zdjęcie(wymagane)</label>
+        <input type="text" id="image" class="form-control" formControlName="image">
+    </div>
+    <div *ngIf="submitted && tripForm.controls.image.errors" class="text-danger">Pierwsze zdjęcie jest wymagane.</div>
+    <div class="form-group">
+        <label for="image2">Zdjęcie2</label>
+        <input type="text" id="image2" class="form-control" formControlName="image2">
+    </div>
+    <div class="form-group">
+        <label for="image3">Zdjęcie3</label>
+        <input type="text" id="image3" class="form-control" formControlName="image3">
+    </div>
+    <div class="form-group">
+        <label for="image4">Zdjęcie4</label>
+        <input type="text" id="image4" class="form-control" formControlName="image4">
+    </div>
+    <div class="form-group">
+        <label for="location">Lokalizacja</label>
+        <input type="text" id="location" class="form-control" formControlName="location">
+    </div>
+    <div *ngIf="submitted && tripForm.controls.location.errors" class="text-danger">Lokalizacja jest wymagana.</div>
+
+    <!-- <div class="form-group">
         <label for="rating">Rating</label>
         <input type="number" id="rating" class="form-control" formControlName="rating">
         <div *ngIf="submitted && tripForm.controls.rating.errors?.['required']" class="text-danger">Rating is required.
@@ -52,7 +74,7 @@
         </div>
         <div *ngIf="submitted && tripForm.controls.rating.errors?.['max']" class="text-danger">Rating must be at most 5.
         </div>
-    </div>
+    </div> -->
 
     <button type="submit" class="btn btn-primary mt-3">Dodaj wycieczkę</button>
 </form>
