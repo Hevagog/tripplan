@@ -7,11 +7,12 @@ import { TriplistComponent } from 'app/components/triplist/triplist.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { CurrencyConvertComponent } from './components/currency-convert/currency-convert.component';
+import { OverallReservationComponent } from './components/overall-reservation/overall-reservation.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, TripComponent, TriplistComponent, PageNotFoundComponent, CurrencyConvertComponent, MainPageComponent, TopMenuComponent],
+  imports: [CommonModule, RouterOutlet, TripComponent, TriplistComponent, PageNotFoundComponent, CurrencyConvertComponent, MainPageComponent, TopMenuComponent, OverallReservationComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

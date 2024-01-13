@@ -21,7 +21,7 @@
                     }}</p>
                 <div class="rating-stars mt-3">
                     <span *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
-                        <button class="btn btn-outline-dark circle" (click)="rate(i + 1)"
+                        <button class="btn btn-outline-dark circle"
                             [ngStyle]="{'background-color': i < trip.rating ? 'yellow' : 'white'}">
                             {{i+1}}
                         </button>

@@ -1,3 +1,5 @@
+<app-overall-reservation></app-overall-reservation>
+
 <div class="container">
     <div class="row">
         <ng-container *ngFor="let trip of tripsInCartList">
@@ -11,15 +13,17 @@
         </ng-container>
     </div>
 </div>
-
-<footer class="container p-2 custom-footer">
-    <div class="row">
-        <div class="col-md-6 text-center">
-            <p class="lead">{{sum | currency:defaultCurrency:selectedCurrency || defaultCurrency}} {{selectedCurrency}}
-            </p>
+<ng-container *ngIf="tripsInCartList?.length != 0">
+    <footer class="container p-2 custom-footer">
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <p class="lead">{{sum | currency:defaultCurrency:selectedCurrency || defaultCurrency}}
+                    {{selectedCurrency}}
+                </p>
+            </div>
+            <div class="col-md-6 text-right">
+                <button class="btn btn-light btn-lg" (click)="buyAll()">Kup wszystko</button>
+            </div>
         </div>
-        <div class="col-md-6 text-right">
-            <button class="btn btn-light btn-lg" (click)="buyAll()">Kup wszystko</button>
-        </div>
-    </div>
-</footer>
+    </footer>
+</ng-container>

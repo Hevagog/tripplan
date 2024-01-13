@@ -6,11 +6,12 @@ import { BuyTripService } from 'app/services/buy-trip.service';
 import { CurrencyService } from 'app/services/currency.service';
 import { CartTripComponent } from 'app/components/cart-trip/cart-trip.component';
 import { ReservationService } from 'app/services/reservation.service';
+import { OverallReservationComponent } from '../overall-reservation/overall-reservation.component';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, CartTripComponent, CurrencyPipe],
+  imports: [CommonModule, CartTripComponent, CurrencyPipe, OverallReservationComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })

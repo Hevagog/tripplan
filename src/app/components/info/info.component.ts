@@ -32,9 +32,11 @@ export class InfoComponent implements OnInit {
   private checkUpcomingTrips(): void {
     const oneMonthFromNow = new Date();
     oneMonthFromNow.setMonth(oneMonthFromNow.getMonth() + 1);
+    oneMonthFromNow.setHours(0, 0, 0, 0);
     this.upcomingTrips = this.tripsInHistory?.filter(trip => {
       const tripStartDate = new Date(trip.startDate);
-      return tripStartDate <= oneMonthFromNow;
+      tripStartDate.setHours(0, 0, 0, 0);
+      return tripStartDate <= oneMonthFromNow && tripStartDate >= new Date();
     });
   }
 }

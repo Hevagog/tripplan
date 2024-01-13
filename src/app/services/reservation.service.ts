@@ -1,6 +1,7 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable, inject } from '@angular/core';
 import { TripObject } from 'assets/trip-object';
+import { CurrencyPipe } from 'app/components/pipes/currency.pipe';
 import {
   collection, collectionData, deleteDoc, doc,
   Firestore, limit, orderBy, query, runTransaction,
@@ -178,4 +179,6 @@ export class ReservationService {
     this._tripsInCart.next({});
     this._tripsInCartAmount.next({});
   }
+
+
 }

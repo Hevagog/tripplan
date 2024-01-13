@@ -33,8 +33,6 @@ export class OverallReservationComponent {
         this.totalReservedValue = this.currencyPipe.transform(this.totalReservedValue ?? 0, 'złoty', currency);
       }
       this.selectedCurrency = currency;
-      this.newCurrency = this.totalReservedValue;
     });
   }
-
 }
