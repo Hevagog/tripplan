@@ -9,10 +9,12 @@ import { CurrencyService } from '../../services/currency.service';
   styleUrl: './currency-convert.component.css'
 })
 export class CurrencyConvertComponent {
+  currentCurrency: string = 'złoty';
 
   constructor(private currencyService: CurrencyService, private cdRef: ChangeDetectorRef) { }
 
   changeCurrency(currency: string) {
+    this.currentCurrency = currency;
     this.currencyService.changeCurrency(currency);
     this.cdRef.detectChanges();
   }

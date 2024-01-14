@@ -4,5 +4,6 @@
     style="width: 80px; height: 80px; right: 20px; top: 20px;">
     <span class="fas fa-shopping-cart mb-1"></span>
     <span class="font-weight-bold mb-1">{{ totalReservedSeats }}</span>
-    <span>{{ totalReservedValue?.toFixed(2)}}</span>
+    <span>{{totalReservedValue??0 | currency:defaultCurrency:selectedCurrency || defaultCurrency}}
+    </span>
 </div>

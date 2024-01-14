@@ -1,5 +1,6 @@
-<!-- <div class="btn-group-vertical sticky-top" role="group" aria-label="Currency buttons"> -->
-<button type="button" class="btn btn-secondary" (click)="changeCurrency('złoty')">Złoty</button>
-<button type="button" class="btn btn-secondary" (click)="changeCurrency('dolar')">Dolar</button>
-<button type="button" class="btn btn-secondary" (click)="changeCurrency('euro')">Euro</button>
-<!-- </div> -->
+<button type="button" class="btn btn-secondary" [class.active]="currentCurrency === 'złoty'"
+    (click)="changeCurrency('złoty')">Złoty</button>
+<button type="button" class="btn btn-secondary" [class.active]="currentCurrency === 'dolar'"
+    (click)="changeCurrency('dolar')">Dolar</button>
+<button type="button" class="btn btn-secondary" [class.active]="currentCurrency === 'euro'"
+    (click)="changeCurrency('euro')">Euro</button>
